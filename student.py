@@ -9,18 +9,17 @@ STUDENTS_FILE = "students.txt"
 
 # For view workflow
 # -----------------------------------
-"""With returning to student menu message"""
 
 
 def view_students_menu():
-    """Display all registered students and return the list."""
+    """Displays all registered students and returns the list."""
     students = read_file(STUDENTS_FILE)
 
     if not students:
         print("\n[-] No students registered yet.")
         return []
 
-    # Sort students by their numeric Student ID part (e.g., S001)
+    # sorts out all students and arranges in the same format (e.g, S001)
     students = sorted(students, key=lambda x: int(x.split(",")[0][1:]))
 
     print("\n--- Registered Students ---")
@@ -30,7 +29,7 @@ def view_students_menu():
     for s in students:
         try:
             student_id, name, email = s.split(",", 2)
-            # Print the student details in a formatted table row
+            #this will print student details in a table row
             print("{:<10} | {:<30} | {:<35}".format(student_id, name, email))
         except ValueError:
             print(f"[!] Invalid line in file: {s}")
@@ -42,7 +41,7 @@ def view_students_menu():
 # view workflow (for edit/delete)
 # -----------------------------------
 def view_students_list():
-    """View students for Edit/Delete without returning to student menu message."""
+    """DNT -AA"""
     students = read_file(STUDENTS_FILE)
     if not students:
         print("\n[-] No students registered yet.")
@@ -63,14 +62,14 @@ def view_students_list():
     return students
 
 
-# For add workflow
+# For add new student
 # -----------------------------------
 def add_student():
     """Add a new student (ID, name, email)."""
     print("\n--- Add New Student ---")
     students = read_file(STUDENTS_FILE)
 
-    # ID input loop
+    # id input loop
     while True:
         student_id = input("Enter Student ID (e.g., S001) or 'back' to cancel: ").strip()
         if student_id.lower() == "back":
@@ -78,12 +77,12 @@ def add_student():
             time.sleep(1)
             return
 
-        # Validation: Format S + 3 digits
+        # Validate student id
         if not (student_id.upper().startswith("S") and len(student_id) == 4 and student_id[1:].isdigit()):
             print("[-] Invalid format! Must be S + 3 digits (e.g., S001).")
             continue
 
-        # Validation: Check for duplicate ID
+        # Check for duplicate id
         if any(s.split(",")[0] == student_id.upper() for s in students):
             print("[-] Student ID already exists! Enter a new ID.")
             continue
@@ -120,7 +119,7 @@ def add_student():
     append_file(STUDENTS_FILE, f"{student_id},{name},{email}")
     print("[+] Student added successfully!")
 
-    # Ask the user next action (recursive call)
+    # Ask the user for next action 
     while True:
         choice = input("Do you want to add another student? (Y/N): ").strip().lower()
         if choice == "y":
@@ -182,7 +181,7 @@ def edit_student():
 
                 # Update Email
                 if new_email and new_email.lower() != 'skip':
-                    # Basic email format check
+                    # validate email to make sure it is correct format
                     if "@" not in new_email or "." not in new_email:
                         print("[-] Invalid new email format. Update cancelled for this field.")
                         email_to_save = current_email
