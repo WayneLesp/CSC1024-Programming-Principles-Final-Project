@@ -1,0 +1,5 @@
+Performance Report for: Kai Zhe (S001)
+
+Course ID       | Course Name               | Marks    | Grade
+-------------------------------------------------------
+C001            | Programming Principle     | 80       | B    

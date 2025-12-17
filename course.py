@@ -1,24 +1,6 @@
 import time
+from helper import read_file, write_file, append_file
 COURSES_FILE = "courses.txt"
-
-# -------------------------
-# File handling helpers
-# -------------------------
-def read_file(filename):
-    try:
-        with open(filename, "r") as f:
-            return [line.strip() for line in f if line.strip()]
-    except FileNotFoundError:
-        return []
-
-def write_file(filename, data_list):
-    with open(filename, "w") as f:
-        for line in data_list:
-            f.write(line + "\n")
-
-def append_file(filename, line):
-    with open(filename, "a") as f:
-        f.write(line + "\n")
 
 # -------------------------
 # Course Management
