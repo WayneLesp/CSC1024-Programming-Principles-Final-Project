@@ -39,7 +39,7 @@ def course_menu():
             print("[-] Invalid choice. Please enter a valid number.")
 
 # -------------------------
-# Student Management Menu (NEWLY ADDED)
+# Student Management Menu 
 # -------------------------
 def student_menu():
     while True:
@@ -104,4 +104,5 @@ def main_menu():
             print("[-] Invalid choice. Please enter a valid number.")
 
 if __name__ == "__main__":
+
     main_menu()
