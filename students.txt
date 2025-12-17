@@ -1,2 +1,5 @@
 S001,Kai Zhe,Kaizhe@gmail.com
 S002,Alvin,Alvin@gmail.com
+S003,Abdullah Asghar,Abdullasghar@gmail.com
+S004,Wayne Lesperance,Waynelesperance@gmail.com
+S005,Safiullah Khan,Msafi@gmail.com
