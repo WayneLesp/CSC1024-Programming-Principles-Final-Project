@@ -8,7 +8,7 @@ STUDENTS_FILE = "students.txt"
 COURSES_FILE = "courses.txt"
 
 
-# --- Grade Calculation Logic (Core Requirement) ---
+# --- Grade calculation logic ---
 
 def calculate_letter_grade(marks):
     """
@@ -37,7 +37,6 @@ def calculate_letter_grade(marks):
 # --- Data Lookup Helpers (from other modules' data files) ---
 
 def find_entity_name(entity_id, filename):
-    """Generic helper to find the name of a student or course."""
     lines = read_file(filename)
     for line in lines:
         parts = line.split(",", 2)
@@ -66,7 +65,7 @@ def get_mark_record(student_id, course_id, grades):
     return None, None
 
 
-# --- Deletion Function for Data Integrity (Used by student.py and course.py) ---
+# --- Delete Function for data (Used by student.py and course.py) ---
 
 def delete_grades_by_student(student_id):
     """Deletes all grade records for a given student ID."""
@@ -120,7 +119,7 @@ def add_mark():
 
     grades = read_file(GRADES_FILE)
 
-    # Check for existing mark (Preventing addition of duplicates)
+    # Check for existing mark 
     if get_mark_record(student_id, course_id, grades)[0] is not None:
         print(f"[!] Mark already exists for {student_id} in {course_id}. Use 'Edit Mark' instead.")
         return
@@ -363,7 +362,7 @@ def performance_report_menu():
 # ===============================================
 
 def export_report_logic(report_type):
-    """Handles the file writing for exporting reports (Core Requirement)."""
+    """Handles the file writing for exporting reports"""
 
     if report_type == 'individual':
         student_id = input("Enter Student ID for export: ").strip().upper()
@@ -408,7 +407,7 @@ def export_report_logic(report_type):
         course_grades = []
         course_marks = []
 
-        # Filter grades and calculate stats (similar to display_course_summary)
+        # Filter grades and calculate stats 
         for g in grades:
             try:
                 g_student_id, g_course_id, marks_str, grade = g.split(",", 3)
